@@ -32,15 +32,28 @@
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
+    <!-- Find the right place for the menubar div -->
+    <div id="menu_bar">
+        <a href=""><button id="cart_button">Cart</button></a>
+    </div>
 </div>
 
 <div class="container">
-    <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+    <div class="card" >
+        <select id="chose_category" >
+            <option value="all_category">All Category</option>
+            <option th:each="cat : ${allCategory}" th:value="${cat}" th:text="${cat}">Invalid Category</option>
+        </select>
+         <select id="chose_supplier">
+             <option value="all_supplier">All Supplier</option>
+             <option th:each="supp : ${allSupplier}" th:value="${supp}" th:text="${supp}">Invalid Supplier</option>
+         </select>
+        <!--<strong th:text="${category.name}">Category Title</strong> -->
     </div>
 
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
+
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${allProducts}">
             <div class="card">
                 <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
                 <div class="card-header">
