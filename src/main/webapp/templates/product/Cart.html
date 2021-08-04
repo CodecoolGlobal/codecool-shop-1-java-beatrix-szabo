@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Your Cart</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
   <body>
     <div>
-      <br>
-      <h1>
-        Your Cart
-      </h1>
-      <img src="../../static/img/bk.JPG" width="30%" height="30%">
-      <br>
-      <hr>
-      <br>
-      <h2>Products in your cart:</h2>
-      <br>
+        <div class="jumbotron text-center">
+            <h1>
+                Your Cart
+            </h1>
+            <!-- Find the right place for the menubar div -->
+            <div id="menu_bar">
+                <a href="/"><button id="cart_button">Home Page</button></a>
+            </div>
+        </div>
+
+        <div class="container">
+            <img src="../../static/img/bk.JPG" width="30%" height="30%">
+          <h2>Products in your cart:</h2>
+      </div>
     </div>
 
   <div th:replace="footer.html ::copy"></div>
