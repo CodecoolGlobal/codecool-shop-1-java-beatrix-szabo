@@ -32,10 +32,10 @@
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <h1 th:text="${hi}">nemjo</h1>
+    <h1 th:text="${supp}">Hello</h1>
     <!-- Find the right place for the menubar div -->
     <div id="menu_bar">
-        <a href=""><button id="cart_button">Cart</button></a>
+        <a href="/cart"><button id="cart_button">Cart</button></a>
     </div>
 </div>
 
@@ -43,11 +43,13 @@
     <div class="card" >
         <form>
         <select id="chose_category" name="chose_category" onchange="this.form.submit()">
-            <option value="" >All Category</option>
+            <option  value="base">List by Category</option>
+            <option value="all">All Category</option>
             <option th:each="cat : ${allCategory}" th:value="${cat.getId()}" th:text="${cat.getName()}">Invalid Category</option>
         </select>
         <select id="chose_supplier" name ="chose_supplier" onchange="this.form.submit()">
-             <!--<option value="all_supplier">All Supplier</option> -->
+            <option  value="base">List by Supplier</option>
+             <option value="all">All Supplier</option>
              <option th:each="supp : ${allSupplier}" th:value="${supp.getId()}" th:text="${supp.getName()}">Invalid Supplier</option>
          </select>
         </form>
@@ -68,7 +70,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <button class="btn btn-success" th:action="${Cart.add(prod)}">Add to cart</button>
                     </div>
                 </div>
             </div>

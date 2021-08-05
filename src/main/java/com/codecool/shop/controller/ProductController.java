@@ -38,32 +38,38 @@ public class ProductController extends HttpServlet {
         session.setAttribute("category", req.getParameter("chose_category"));
         session.setAttribute("supplier", req.getParameter("chose_supplier"));
 
+
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
+        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        ProductService productService = new ProductService(productDataStore,productCategoryDataStore, supplierDataStore);
         SupplierDao suppliers = SupplierDaoMem.getInstance();
         CartDao cart = CartDaoMem.getInstance();
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        //default: all products
+
+        context.setVariable("Cart", cart);
         context.setVariable("allCategory", getAllCategory(productDataStore));
         context.setVariable("allSupplier", getAllSupplier(suppliers));
 
-        if(session.getAttribute("category") == null ||session.getAttribute("category").equals("0")) {
-            context.setVariable("products", productDataStore.getAll());
-        } else {
-            //context.setVariable("category", productService.getProductCategory());
-            context.setVariable("products", productService.getProductsForCategory(Integer.valueOf(String.valueOf(session.getAttribute("category")))));
+        /*context.setVariable("supp", session.getAttribute("category"));
+        context.setVariable("supp", session.getAttribute("category"));*/
+
+        if(session.getAttribute("category") != null && session.getAttribute("supplier") != null) {
+            if (session.getAttribute("supplier").equals("all") || session.getAttribute("category").equals("all")) {
+                session.removeAttribute("supplier");
+                session.removeAttribute("category");
+            }
         }
-        context.setVariable("hi", session.getAttribute("category"));
-        //context.setVariable("category", productService.getProductCategory(1));
-        //context.setVariable("products", productService.getProductsForCategory(1));
 
-        /*context.setVariable("test", session.getAttribute("category"));
-        context.setVariable("ketteske", session.getAttribute("supplier"));*/
-
-
+        if(session.getAttribute("category") == null && session.getAttribute("supplier") == null) {
+            context.setVariable("products", productDataStore.getAll());
+        } else if (session.getAttribute("supplier") != null && session.getAttribute("category").equals("base")) {
+            context.setVariable("products", productService.getProductsForSupplier(Integer.parseInt(String.valueOf(session.getAttribute("supplier")))));
+        } else if (session.getAttribute("category") != null && session.getAttribute("supplier").equals("base")){
+            context.setVariable("products", productService.getProductsForCategory(Integer.parseInt(String.valueOf(session.getAttribute("category")))));
+        }
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
