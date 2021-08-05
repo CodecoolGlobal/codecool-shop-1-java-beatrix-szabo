@@ -3,6 +3,8 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class CartDaoMem implements CartDao {
 
@@ -36,5 +38,22 @@ public class CartDaoMem implements CartDao {
     @Override
     public ArrayList<Product> getAll(){
         return productCartList;
+    }
+
+
+    public HashMap countProducts() {
+        HashMap<Product, Integer> productNumber = new HashMap();
+        for(Product p : productCartList) {
+            if(productNumber.containsKey(p.getName())) {
+                int prodNum;
+                prodNum = productNumber.get(p);
+                prodNum += 1;
+                productNumber.put(p, prodNum);
+            }
+            else {
+                productNumber.put(p, 1);
+            }
+        }
+        return productNumber;
     }
 }
