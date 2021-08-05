@@ -32,28 +32,28 @@
                 <a href="/"><button id="cart_button">Home Page</button></a>
                 <br>
                 <br>
-                <p>Price all together: </p>
-                <br>
-                <br>
-                <h2>Products in your cart:</h2>
-                <br>
-                <table>
-                    <tr>
-                        <th>
-                            <h3>Product Name</h3>
-                        </th>
-                        <th>
-                            <h4>Quantity</h4>
-                        </th>
-                        <th>
-                            <h4>Unite Price</h4>
-                        </th>
-                        <th>
-                            <h4>Total Price</h4>
-                        </th>
-                    </tr>
-                </table>
+                <div id="products" class="row">
 
+                    <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
+                        <div class="card">
+                            <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                            <div class="card-header">
+                                <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                                <p class="card-text" th:text="${prod.description}">Product description... </p>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                                </div>
+                                <div class="card-text">
+                                    <!--<button class="btn btn-success" th:action="${Cart.add(prod)}">Add to cart</button>
+                                --></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             </div>
         </div>
 
