@@ -1,9 +1,9 @@
 package com.codecool.shop.dao.implementation;
 import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class CartDaoMem implements CartDao {
@@ -39,7 +39,7 @@ public class CartDaoMem implements CartDao {
     public ArrayList<Product> getAll(){
         return productCartList;
     }
-
+    @Override
     public HashMap<Product, Integer> countProducts() {
         HashMap<Product, Integer> productNumber = new HashMap<>();
         for(Product p : productCartList) {
@@ -54,6 +54,30 @@ public class CartDaoMem implements CartDao {
             }
         }
         return productNumber;
+    }
+
+    /*@Override
+    public HashMap<Product, Double> CountProductsByEachPrice() {
+        HashMap<Product, Double> MoneyByProducts = new HashMap<>();
+        HashMap<Product, Integer> mapForMoney = this.countProducts();
+        for (Map.Entry<Product, Integer> pair: mapForMoney.entrySet()){
+
+            MoneyByProducts.put(pair.getKey(), Double.parseDouble(pair.getKey().getPrice().replace("USD", "")) * pair.getValue());
+        }
+        System.out.println(MoneyByProducts.toString());
+
+        return MoneyByProducts;
+    }*/
+
+    @Override
+    public Double CountProductByAll() {
+        Double money_cost = 0.0;
+        HashMap<Product, Integer> mapForMoney = this.countProducts();
+        for (Map.Entry<Product, Integer> pair: mapForMoney.entrySet()){
+
+            money_cost += Double.parseDouble(pair.getKey().getPrice().replace("USD", "")) * pair.getValue();
+        }
+        return money_cost;
     }
 
 }
