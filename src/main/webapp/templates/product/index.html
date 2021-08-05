@@ -46,6 +46,7 @@
             <option value="all">All Category</option>
             <option th:each="cat : ${allCategory}" th:value="${cat.getId()}" th:text="${cat.getName()}">Invalid Category</option>
         </select>
+
         <select id="chose_supplier" name ="chose_supplier" onchange="this.form.submit()">
             <option  value="base">List by Supplier</option>
              <option value="all">All Supplier</option>
@@ -69,7 +70,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <button class="btn btn-success" th:attr="onclick=|Cart.add('${prod}')|">Add to cart</button>
+                        <a th:href="@{/add-cart/{product} (product=${prod.getName()})}"><button class="btn btn-success">Add to cart</button></a>
                     </div>
                 </div>
             </div>
