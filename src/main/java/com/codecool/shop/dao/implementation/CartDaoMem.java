@@ -40,11 +40,10 @@ public class CartDaoMem implements CartDao {
         return productCartList;
     }
 
-
-    public HashMap countProducts() {
-        HashMap<Product, Integer> productNumber = new HashMap();
+    public HashMap<Product, Integer> countProducts() {
+        HashMap<Product, Integer> productNumber = new HashMap<>();
         for(Product p : productCartList) {
-            if(productNumber.containsKey(p.getName())) {
+            if(productNumber.containsKey(p)) {
                 int prodNum;
                 prodNum = productNumber.get(p);
                 prodNum += 1;
@@ -56,4 +55,5 @@ public class CartDaoMem implements CartDao {
         }
         return productNumber;
     }
+
 }

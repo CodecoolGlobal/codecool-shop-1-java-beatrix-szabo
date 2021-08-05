@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Your Cart</title>
@@ -23,66 +23,25 @@
   <body>
         <div class="jumbotron text-center">
             <h1>Your Cart</h1>
-            <img src="../../static/img/bk.JPG" width="15%" height="15%">
+
             <!-- Find the right place for the menubar div -->
             <div id="menu_bar">
                 <a href="/"><button id="cart_button">Home Page</button></a>
-                <br>
-                <br>
-                <div id="products" class="row">
-                    <div class="col col-sm-12 col-md-6 col-lg-4" th:each="cart : ${mapOfCart}">
-                        <div class="card">
-                            <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
-                            <div class="card-header">
-                                <!--/*@thymesVar id="name" type=""*/-->
-                                <h4 class="card-title" th:text="${cart.}">Product name</h4>
-                                <h4 class="card-title" th:text="${cart.key}">Number</h4>
-                                <!--<p class="card-text" th:text="${prod.description}">Product description... </p>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                                </div>
-                                <div class="card-text">
-                                    --><!--<button class="btn btn-success" th:action="${Cart.add(prod)}">Add to cart</button>
-                                --></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-      <!--  </div>
         </div>
 
-        <div class="container">
-            <br>
-            <br>
-            <p>Price all together: </p>
-            <br>
-            <br>
-            <h2>Products in your cart:</h2>
-            <br>
-            <table>
-                <tr>
-                    <th>
-                        <h3>Product Name</h3>
-                    </th>
-                    <th>
-                        <h4>Quantity</h4>
-                    </th>
-                    <th>
-                        <h4>Unite Price</h4>
-                    </th>
-                    <th>
-                        <h4>Total Price</h4>
-                    </th>
-                </tr>
-            </table>
 
+        <div id="products" class="row" th:each="prod: ${cart.countProducts()}">
+
+            <div class="card">
+                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
+                <div class="card-header">
+                    <h4 class="card-title" th:text="${prod.key.name}">Product name</h4>
+                </div>
+                        <p class="lead" th:text="${prod.value}">100 USD</p>
+            </div>
         </div>
-    </div>-->
 
   <div th:replace="footer.html ::copy"></div>
   </body>

@@ -24,9 +24,12 @@ public class CartController extends HttpServlet {
         CartDao cart = CartDaoMem.getInstance();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, rep, req.getServletContext());
-        HashMap<Product, Integer> mapOfCart = cart.countProducts();
-        context.setVariable("mapOfCart", mapOfCart);
+
+
+        context.setVariable("cart", cart);
         engine.process("product/Cart.html", context, rep.getWriter());
     }
+
+
 }
 

@@ -49,7 +49,6 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
-
         context.setVariable("Cart", cart);
         context.setVariable("allCategory", getAllCategory(productDataStore));
         context.setVariable("allSupplier", getAllSupplier(suppliers));
