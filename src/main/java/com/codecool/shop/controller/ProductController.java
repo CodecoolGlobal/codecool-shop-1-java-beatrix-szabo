@@ -38,16 +38,17 @@ public class ProductController extends HttpServlet {
         session.setAttribute("category", req.getParameter("chose_category"));
         session.setAttribute("supplier", req.getParameter("chose_supplier"));
 
-
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore, supplierDataStore);
         SupplierDao suppliers = SupplierDaoMem.getInstance();
-        CartDao cart = CartDaoMem.getInstance();
 
+
+        CartDao cart = CartDaoMem.getInstance();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
 
         context.setVariable("Cart", cart);
         context.setVariable("allCategory", getAllCategory(productDataStore));
@@ -76,7 +77,6 @@ public class ProductController extends HttpServlet {
         // context.setVariables(params);
         engine.process("product/index.html", context, resp.getWriter());
     }
-
 
     private ArrayList<ProductCategory> getAllCategory(ProductDao products) {
         ArrayList<ProductCategory> allCategory = new ArrayList<>();
