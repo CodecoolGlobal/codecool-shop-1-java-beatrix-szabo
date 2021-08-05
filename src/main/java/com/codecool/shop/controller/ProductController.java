@@ -53,8 +53,6 @@ public class ProductController extends HttpServlet {
         context.setVariable("allCategory", getAllCategory(productDataStore));
         context.setVariable("allSupplier", getAllSupplier(suppliers));
 
-        /*context.setVariable("supp", session.getAttribute("category"));
-        context.setVariable("supp", session.getAttribute("category"));*/
 
         if(session.getAttribute("category") != null && session.getAttribute("supplier") != null) {
             if (session.getAttribute("supplier").equals("all") || session.getAttribute("category").equals("all")) {

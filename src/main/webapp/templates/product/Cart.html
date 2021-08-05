@@ -21,11 +21,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
   <body>
-    <div>
         <div class="jumbotron text-center">
-            <h1>
-                Your Cart
-            </h1>
+            <h1>Your Cart</h1>
+            <img src="../../static/img/bk.JPG" width="15%" height="15%">
             <!-- Find the right place for the menubar div -->
             <div id="menu_bar">
                 <a href="/"><button id="cart_button">Home Page</button></a>
@@ -33,9 +31,31 @@
         </div>
 
         <div class="container">
-            <img src="../../static/img/bk.JPG" width="30%" height="30%">
-          <h2>Products in your cart:</h2>
-      </div>
+            <br>
+            <br>
+            <p>Price all together: </p>
+            <br>
+            <br>
+            <h2>Products in your cart:</h2>
+            <br>
+            <table>
+                <tr>
+                    <th>
+                        <h3>Product Name</h3>
+                    </th>
+                    <th>
+                        <h4>Quantity</h4>
+                    </th>
+                    <th>
+                        <h4>Unite Price</h4>
+                    </th>
+                    <th>
+                        <h4>Total Price</h4>
+                    </th>
+                </tr>
+            </table>
+
+        </div>
     </div>
 
   <div th:replace="footer.html ::copy"></div>
