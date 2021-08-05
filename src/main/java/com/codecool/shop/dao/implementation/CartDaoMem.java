@@ -1,9 +1,7 @@
 package com.codecool.shop.dao.implementation;
-
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
-
 import java.util.ArrayList;
 
 public class CartDaoMem implements CartDao {
@@ -27,7 +25,12 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void remove(Product product) {
-        // TODO
+        for (Product prod: productCartList ){
+            if (prod.getName().equals(product.getName())){
+                productCartList.remove(prod);
+                break;
+            }
+        }
     }
 
     @Override

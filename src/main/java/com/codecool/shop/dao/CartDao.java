@@ -9,5 +9,4 @@ public interface CartDao {
     void add(Product product);
     void remove(Product product);
     ArrayList<Product> getAll();
-
 }
