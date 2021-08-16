@@ -26,6 +26,7 @@ public class CartDaoMem implements CartDao {
     }
 
     @Override
+    // TODO: egy v több elem remove, if, boolean
     public void remove(Product product) {
         for (Product prod: productCartList ){
             if (prod.getName().equals(product.getName())){
