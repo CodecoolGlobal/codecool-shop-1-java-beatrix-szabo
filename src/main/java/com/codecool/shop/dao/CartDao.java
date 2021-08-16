@@ -10,7 +10,7 @@ public interface CartDao {
     void remove(Product product);
     ArrayList<Product> getAll();
     HashMap<Product, Integer> countProducts();
-    //HashMap<Product, Double> CountProductsByEachPrice();
+    HashMap<Product, Double> CountProductsByEachPrice();
     Double CountProductByAll();
 
 }

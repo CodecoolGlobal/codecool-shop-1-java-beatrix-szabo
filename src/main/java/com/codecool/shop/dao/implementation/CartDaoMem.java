@@ -39,6 +39,7 @@ public class CartDaoMem implements CartDao {
     public ArrayList<Product> getAll(){
         return productCartList;
     }
+
     @Override
     public HashMap<Product, Integer> countProducts() {
         HashMap<Product, Integer> productNumber = new HashMap<>();
@@ -56,7 +57,7 @@ public class CartDaoMem implements CartDao {
         return productNumber;
     }
 
-    /*@Override
+    @Override
     public HashMap<Product, Double> CountProductsByEachPrice() {
         HashMap<Product, Double> MoneyByProducts = new HashMap<>();
         HashMap<Product, Integer> mapForMoney = this.countProducts();
@@ -65,9 +66,9 @@ public class CartDaoMem implements CartDao {
             MoneyByProducts.put(pair.getKey(), Double.parseDouble(pair.getKey().getPrice().replace("USD", "")) * pair.getValue());
         }
         System.out.println(MoneyByProducts.toString());
-
+        System.out.println("valami");
         return MoneyByProducts;
-    }*/
+    }
 
     @Override
     public Double CountProductByAll() {
@@ -79,5 +80,7 @@ public class CartDaoMem implements CartDao {
         }
         return money_cost;
     }
+
+
 
 }
