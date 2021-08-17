@@ -32,7 +32,7 @@
         </div>
         <div class="card-header">
             <h1 th:text="${fullMoney}+USD">100 USD</h1>
-            <button id="order_button">Order Now</button>
+            <a href="/order"><button id="order_button">Order Now</button></a>
         </div>
 
         <div id="products" class="row" th:each="prod: ${cart.countProducts()}">
