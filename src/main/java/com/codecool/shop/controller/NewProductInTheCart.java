@@ -24,7 +24,6 @@ public class NewProductInTheCart extends HttpServlet {
         String uri = req.getRequestURI();
         String productName = uri.substring(10).replace("%20", " ");
 
-
         CartDao cart = CartDaoMem.getInstance();
         ProductDao productDataStore = ProductDaoMem.getInstance();
 

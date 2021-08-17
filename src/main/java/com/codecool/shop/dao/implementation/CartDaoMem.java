@@ -26,6 +26,7 @@ public class CartDaoMem implements CartDao {
     }
 
     @Override
+
     public void remove(Product product, String number) {
         if(number.equals("all")){
             while(this.productCartList.contains(product)){
@@ -37,6 +38,7 @@ public class CartDaoMem implements CartDao {
                     productCartList.remove(prod);
                     break;
                 }
+
             }
         }
 
