@@ -40,6 +40,7 @@ public class CartDaoMem implements CartDao {
     public ArrayList<Product> getAll(){
         return productCartList;
     }
+
     @Override
     public HashMap<Product, Integer> countProducts() {
         HashMap<Product, Integer> productNumber = new HashMap<>();
