@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.codecool.shop.users.User;
 
@@ -34,6 +35,7 @@ public class RegistrationController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         AllUser alluser = AllUser.getInstance();
+        HttpSession session = req.getSession();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
@@ -46,6 +48,7 @@ public class RegistrationController extends HttpServlet {
             }
         }
         alluser.addUser(new User(username, password, email));
+        session.setAttribute("loggedin", email);
         registeredEmail = false;
         rep.sendRedirect(req.getContextPath() + "/");
     }
