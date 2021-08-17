@@ -1,6 +1,7 @@
 package com.codecool.shop.model;
 
 import java.util.Currency;
+import java.util.Objects;
 
 public class Product extends BaseModel {
 
@@ -59,6 +60,12 @@ public class Product extends BaseModel {
         this.supplier = supplier;
         this.supplier.addProduct(this);
     }
+
+    public Double PriceWithoutUsd() {
+        return Double.parseDouble(this.getPrice().replace("USD", ""));
+
+    }
+
 
     @Override
     public String toString() {

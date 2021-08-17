@@ -26,14 +26,22 @@ public class CartDaoMem implements CartDao {
     }
 
     @Override
-    // TODO: egy v több elem remove, if, boolean
-    public void remove(Product product) {
-        for (Product prod: productCartList ){
-            if (prod.getName().equals(product.getName())){
-                productCartList.remove(prod);
-                break;
+
+    public void remove(Product product, String number) {
+        if(number.equals("all")){
+            while(this.productCartList.contains(product)){
+                this.productCartList.remove(product);
+            }
+        }else{
+            for (Product prod: productCartList ){
+                if (prod.getName().equals(product.getName())){
+                    productCartList.remove(prod);
+                    break;
+                }
+
             }
         }
+
     }
 
     @Override
@@ -58,7 +66,7 @@ public class CartDaoMem implements CartDao {
         return productNumber;
     }
 
-    /*@Override
+    @Override
     public HashMap<Product, Double> CountProductsByEachPrice() {
         HashMap<Product, Double> MoneyByProducts = new HashMap<>();
         HashMap<Product, Integer> mapForMoney = this.countProducts();
@@ -66,10 +74,8 @@ public class CartDaoMem implements CartDao {
 
             MoneyByProducts.put(pair.getKey(), Double.parseDouble(pair.getKey().getPrice().replace("USD", "")) * pair.getValue());
         }
-        System.out.println(MoneyByProducts.toString());
-
         return MoneyByProducts;
-    }*/
+    }
 
     @Override
     public Double CountProductByAll() {
@@ -81,5 +87,7 @@ public class CartDaoMem implements CartDao {
         }
         return money_cost;
     }
+
+
 
 }
