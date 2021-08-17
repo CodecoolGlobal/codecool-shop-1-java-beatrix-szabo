@@ -34,7 +34,11 @@
     <h1>Codecool Shop</h1>
     <!-- Find the right place for the menubar div -->
     <div id="menu_bar">
-        <a href="/cart"><button id="cart_button" th:text="${Cart.getAll().size()} ">Cart</button></a>
+        <a href="/cart"><button class="btn btn-success" th:text="${Cart.getAll().size()} ">Cart</button></a>
+        <a th:if="${loggedin == false}" href="/registration"><button class="btn btn-success">Registration</button></a>
+        <a th:if="${loggedin == false}"href="/login"><button class="btn btn-success">Login</button></a>
+        <button class="btn btn-success" th:if="${loggedin == true}" th:text="${username}"></button>
+        <a th:if="${loggedin == true}" href="/logout"><button class="btn btn-success">Logout</button></a>
     </div>
 </div>
 

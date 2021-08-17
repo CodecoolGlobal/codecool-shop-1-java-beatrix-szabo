@@ -10,10 +10,15 @@ import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import com.codecool.shop.users.AdminUser;
+import com.codecool.shop.users.AllUser;
+import com.codecool.shop.users.User;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -43,6 +48,8 @@ public class Initializer implements ServletContextListener {
 
         //setting up a cart
         Cart CartList = new Cart();
-        // TODO: we wanted to use it in the Cart controller and Productcontroller(somehow connect it and use it there)
+
+        //Setting up Users and Superusers
+        AllUser allUser = AllUser.getInstance();
     }
 }

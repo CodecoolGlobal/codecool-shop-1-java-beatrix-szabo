@@ -13,6 +13,8 @@ import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.users.AllUser;
+import com.codecool.shop.users.User;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -38,6 +40,9 @@ public class ProductController extends HttpServlet {
         session.setAttribute("category", req.getParameter("chose_category"));
         session.setAttribute("supplier", req.getParameter("chose_supplier"));
 
+        //user is logged in or not
+
+
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
@@ -49,6 +54,23 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+
+        boolean loggedIn = false;
+        String username = null;
+        if (session.getAttribute("loggedin") != null) {
+            loggedIn = true;
+            for(User u : AllUser.getInstance().getAllUser()) {
+                if (u.getEmail().equals(session.getAttribute("loggedin"))) {
+                    username = u.getName();
+                    break;
+                }
+            }
+
+        }
+
+
+        context.setVariable("username", "Logged in as" + username) ;
+        context.setVariable("loggedin", loggedIn);
         context.setVariable("Cart", cart);
         context.setVariable("allCategory", getAllCategory(productDataStore));
         context.setVariable("allSupplier", getAllSupplier(suppliers));

@@ -1,7 +1,7 @@
 package com.codecool.shop.users;
 
 public class User extends AdminUser{
-    User(String name, String password, String email) {
+    public User(String name, String password, String email) {
         super(password, email);
         this.name = name;
     }

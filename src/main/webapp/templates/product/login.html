@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Registration</title>
+  <title>Login</title>
 
   <!-- Bootstrap components -->
   <!-- Latest compiled and minified Jquery -->
@@ -24,20 +24,26 @@
 <body>
   <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <h1>Login</h1>
+    <h2>Login</h2>
     <!-- Find the right place for the menubar div -->
     <div id="menu_bar">
+      <a href="/"><button class="btn btn-success">Home Page</button></a>
+      <a href="/registration"><button class="btn btn-success">Registration</button></a>
+      <a href="/logout"><button class="btn btn-success">Logout</button></a>
     </div>
 
 
   </div>
 
   <div class="container">
-    <h4>Registration</h4>
-    <form method="post">
-      <input type="text" value="password" name="password">
-      <input type="text" value="email" name="email">
+    <h4>Login</h4>
+    <form class="forms" method="post" >
+      <input type="email" placeholder="email" name="email">
+      <br>
+      <input type="password" placeholder="password" name="password">
+      <br>
       <input type="submit" class="btn btn-success" value ="login">
+      <br>
     </form>
   </div>
 

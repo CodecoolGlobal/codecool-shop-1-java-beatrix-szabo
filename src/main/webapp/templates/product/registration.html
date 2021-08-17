@@ -23,18 +23,26 @@
 <body>
       <div class="jumbotron text-center">
             <h1>Codecool Shop</h1>
-            <h1>Registration</h1>
+            <h2>Registration</h2>
             <!-- Find the right place for the menubar div -->
             <div id="menu_bar">
+                <a href="/"><button id="cart_button">Home Page</button></a>
+                <a href="/login"><button class="btn btn-success">Login</button></a>
             </div>
       </div>
+      <div>
+          <h1>Test</h1>
+      </div>
       <div class="container">
-          <h4>Registration</h4>
-          <form method="post">
-              <input type="text" value="username" name="username">
-              <input type="text" value="password" name="password">
-              <input type="text" value="email" name="email">
-             <input type="submit" class="btn btn-success" value ="login">
+          <h3 th:if="${registeredEmail}"}>Registered Email</h3>
+          <form class="forms" method="post">
+              <input type="text" placeholder="username" name="username">
+              <br>
+              <input type="password" placeholder="password" name="password">
+              <br>
+              <input type="email" placeholder="email" name="email">
+              <br>
+             <input type="submit" class="btn btn-success" value ="registration">
           </form>
 
       </div>
