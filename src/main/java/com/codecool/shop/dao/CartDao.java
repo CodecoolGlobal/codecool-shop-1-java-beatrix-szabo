@@ -7,10 +7,9 @@ import java.util.ArrayList;
 
 public interface CartDao {
     void add(Product product);
-    void remove(Product product);
+    void remove(Product product, String one);
     ArrayList<Product> getAll();
     HashMap<Product, Integer> countProducts();
     HashMap<Product, Double> CountProductsByEachPrice();
     Double CountProductByAll();
-
 }

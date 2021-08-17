@@ -26,11 +26,13 @@ public class CartDaoMem implements CartDao {
     }
 
     @Override
-    public void remove(Product product) {
+    public void remove(Product product, String number) {
         for (Product prod: productCartList ){
             if (prod.getName().equals(product.getName())){
                 productCartList.remove(prod);
-                break;
+                if (number.equals("one")){
+                    break;
+                }
             }
         }
     }

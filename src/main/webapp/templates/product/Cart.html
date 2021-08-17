@@ -46,9 +46,11 @@
                     <h1>Unit Price:</h1>
                     <!--<h3 th:text="${prod.key.PriceWithoutUsd()*prod.value}"></h3>-->
                     <!--<h1 class="lead" th:text="${MoneyByEach.get(prod.key)}">Hope so</h1>>-->
-                    <h1 th:text="${prod.key.getDefaultPrice() * prod.value}"></h1>
                     <h1 class="lead" th:text="${prod.value}">100 USD</h1>
-                </div>
+                    <div class="card-text">
+                        <a th:href="@{/another/{product} (product=${prod.key.name})}"><button class="btn btn-success">+</button></a>
+                        <a class="btn btn-success" th:href="@{/remove/{product} (product=${prod.key.name})}">-</a>
+                        <a class="btn btn-success" th:href="@{/remove/all/{product} (product=${prod.key.name})}">KUKA</a>
             </div>
 
         </div>
