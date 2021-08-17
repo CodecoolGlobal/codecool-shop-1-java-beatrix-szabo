@@ -20,7 +20,7 @@ public class RemoveAproduct extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         rep.sendRedirect(req.getContextPath() + "/cart");
         String uri = req.getRequestURI();
-        String productName = uri.substring(10).replace("%20", " ");
+        String productName = uri.substring(8).replace("%20", " ");
 
 
         CartDao cart = CartDaoMem.getInstance();

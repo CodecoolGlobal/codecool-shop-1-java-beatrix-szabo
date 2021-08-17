@@ -20,12 +20,11 @@ public class RemoveAllSameProduct extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         rep.sendRedirect(req.getContextPath() + "/cart");
         String uri = req.getRequestURI();
-        String productName = uri.substring(10).replace("%20", " ");
+        String productName = uri.substring(12).replace("%20", " ");
 
 
         CartDao cart = CartDaoMem.getInstance();
         ProductDao productDataStore = ProductDaoMem.getInstance();
-
         cart.remove(getProductObject(productName, productDataStore.getAll()), "all");
     }
     private Product getProductObject(String Name, List<Product> AllProduct) {

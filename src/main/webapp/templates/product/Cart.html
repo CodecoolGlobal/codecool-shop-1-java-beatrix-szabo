@@ -35,25 +35,35 @@
 
         </div>
 
-        <div id="products" class="row" th:each="prod: ${cart.countProducts()}">
 
-           <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.key.name}">Product name</h4>
+        <div id="products" class="row">
+
+            <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod: ${cart.countProducts()}">
+                <div class="card">
+                    <!--<h1 th:text="${prod.id}">valami</h1>-->
+                    <img src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
+                    <div class="card-header">
+                        <h4 class="card-title" th:text="${prod.key.name}">Product name</h4>
+                        <p class="card-text" th:text="${prod.key.description}">Product description... </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="lead" th:text="${prod.key.price}">100 USD</p>
+
+                        </div>
+
+                        <div class="card-text">
+                            <a class="btn btn-success" th:href="@{/another/{product} (product=${prod.key.name})}">+</a>
+                            <h5 class="" th:text="${prod.value}">100 USD</h5>
+                            <a class="btn btn-success" th:href="@{/remove/{product} (product=${prod.key.name})}">-</a>
+                            <a class="btn btn-success" th:href="@{/remove/all/{product} (product=${prod.key.name})}">K</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-header">
-                    <h1>Unit Price:</h1>
-                    <!--<h3 th:text="${prod.key.PriceWithoutUsd()*prod.value}"></h3>-->
-                    <!--<h1 class="lead" th:text="${MoneyByEach.get(prod.key)}">Hope so</h1>>-->
-                    <h1 class="lead" th:text="${prod.value}">100 USD</h1>
-                    <div class="card-text">
-                        <a th:href="@{/another/{product} (product=${prod.key.name})}"><button class="btn btn-success">+</button></a>
-                        <a class="btn btn-success" th:href="@{/remove/{product} (product=${prod.key.name})}">-</a>
-                        <a class="btn btn-success" th:href="@{/remove/all/{product} (product=${prod.key.name})}">KUKA</a>
             </div>
-
         </div>
+
+
 
   <div th:replace="footer.html ::copy"></div>
   </body>

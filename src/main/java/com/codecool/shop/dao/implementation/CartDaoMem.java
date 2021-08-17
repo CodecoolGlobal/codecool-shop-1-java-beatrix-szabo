@@ -27,14 +27,19 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void remove(Product product, String number) {
-        for (Product prod: productCartList ){
-            if (prod.getName().equals(product.getName())){
-                productCartList.remove(prod);
-                if (number.equals("one")){
+        if(number.equals("all")){
+            while(this.productCartList.contains(product)){
+                this.productCartList.remove(product);
+            }
+        }else{
+            for (Product prod: productCartList ){
+                if (prod.getName().equals(product.getName())){
+                    productCartList.remove(prod);
                     break;
                 }
             }
         }
+
     }
 
     @Override
@@ -67,8 +72,6 @@ public class CartDaoMem implements CartDao {
 
             MoneyByProducts.put(pair.getKey(), Double.parseDouble(pair.getKey().getPrice().replace("USD", "")) * pair.getValue());
         }
-        System.out.println(MoneyByProducts.toString());
-        System.out.println("valami");
         return MoneyByProducts;
     }
 
