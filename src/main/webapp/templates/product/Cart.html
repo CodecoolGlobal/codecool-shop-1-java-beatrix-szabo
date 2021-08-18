@@ -25,7 +25,7 @@
             <h1>Your Cart</h1>
 
             <!-- Find the right place for the menubar div -->
-            <div id="menu_bar">
+            <div >
                 <a href="/"><button id="cart_button">Home Page</button></a>
             </div>
 
@@ -41,7 +41,7 @@
             <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod: ${cart.countProducts()}">
                 <div class="card">
                     <!--<h1 th:text="${prod.id}">valami</h1>-->
-                    <img src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
+                    <img src="http://placehold.it/300x150/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
                     <div class="card-header">
                         <h4 class="card-title" th:text="${prod.key.name}">Product name</h4>
                         <p class="card-text" th:text="${prod.key.description}">Product description... </p>

@@ -21,6 +21,10 @@
 
 </head>
 <body>
+<div class="jumbotron text-center">
+    <h1>Codecool Shop</h1>
+    <a href="/"><button id="cart_button">Home Page</button></a>
+</div>
 <div class="row">
     <div class="col-75">
         <div class="container">
@@ -89,15 +93,13 @@
             <h4>Cart
                 <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
+          <b th:text="${cart.getAll().size()}"></b>
         </span>
             </h4>
-            <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-            <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-            <hr>
-            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            <div th:each="prod: ${cart.countProducts()}">
+                <p th:text="${prod.key.name}"></p><span th:text="|${prod.value} X ${prod.key.price}|"></span>
+            </div>
+            <p>Total <span class="price" style="color:black" th:text="${cart.CountProductByAll()}"><b></b></span></p>
         </div>
     </div>
 </div>
