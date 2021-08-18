@@ -23,9 +23,10 @@
     <h1>Codecool Shop</h1>
     <a href="/"><button id="cart_button">Home Page</button></a>
 </div>
-<div class="row">
-    <div class="col-75">
-        <div class="container">
+<form action="/checkout" method="post">
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
                 <div class="row">
                     <div class="col-50">
                         <h3>Billing Address</h3>
@@ -82,15 +83,15 @@
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
-                <input type="submit" value="Continue to checkout" class="btn">
+                <input id="checkout" type="submit" value="Continue to checkout" class="btn">
+            </div>
         </div>
-    </div>
-
+</form>
     <div class="col-25">
         <div class="container">
             <h4>Cart
                 <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
+          <i class="fa" style="font-size:24px">&#xf07a;</i>
           <b th:text="${cart.getAll().size()}"></b>
         </span>
             </h4>
@@ -101,12 +102,50 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById("test").addEventListener("click", test);
+<!--
+    I think i gonna drip to make it trough with javascript and just make it with form but live this to make a bit challenge
+<script defer>
+    document.getElementById("checkout").addEventListener("click", test);
     function test(){
-        console.log("this is a test");
+        var name = document.getElementById("fname");
+        var address = document.querySelectorAll("zip", "state", "city", "adr");
+        var cardNumber = document.querySelector("ccnum");
+        var email = document.getElementById("email");
+        var nameOnCArd = document.querySelector("cname");
+        var ExpMonth = document.querySelector("expmonth");
+        var ExpYear = document.querySelector("expyear");
+        var Cv = document.querySelector("cvv");
+        var Date = date();
+        var OrderNumber = 133242;
+
+        fetch(`/checkout/${OrderNumber}`, {
+            method: "post",
+            body: JSON.stringify({
+                name: name,
+                address: address,
+                cardNumber: cardNumber,
+                email: email,
+                nameOnCArd: nameOnCArd,
+                ExpMonth: ExpMonth,
+                ExpYear: ExpYear,
+                Cv: Cv,
+                Date: Date
+            })
+        })
+            .then(res => res.json())
+            .then(res => console.log(res));
     }
-</script>
+
+    function date(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+        return today;
+    }
+
+</script>-->
 </body>
 </html>

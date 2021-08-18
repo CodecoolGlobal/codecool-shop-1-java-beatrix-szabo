@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class CartDaoMem implements CartDao {
 
+
     private ArrayList<Product> productCartList = new ArrayList<>();
     private static CartDaoMem instance = null;
 
@@ -88,6 +89,10 @@ public class CartDaoMem implements CartDao {
         return money_cost;
     }
 
+    @Override
+    public void clear() {
+        productCartList.clear();
+    }
 
 
 }

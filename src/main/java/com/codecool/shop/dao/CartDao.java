@@ -12,4 +12,5 @@ public interface CartDao {
     HashMap<Product, Integer> countProducts();
     HashMap<Product, Double> CountProductsByEachPrice();
     Double CountProductByAll();
+    void clear();
 }
