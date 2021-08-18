@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Page</title>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
@@ -21,7 +23,7 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <a href="/"><button id="cart_button">Home Page</button></a>
+    <a href="/"><button id="cart_button" class="btn btn-success">Home Page</button></a>
 </div>
 <form action="/checkout" method="post">
     <div class="row">
@@ -55,10 +57,10 @@
                         <h3>Payment</h3>
                         <label for="fname">Accepted Cards</label>
                         <div class="icon-container">
-                            <i class="fa fa-cc-visa" style="color:navy;"></i>
-                            <i class="fa fa-cc-amex" style="color:blue;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            <i class="fab fa-cc-visa" style="color:navy;"></i>
+                            <i class="fab fa-cc-amex" style="color:blue;"></i>
+                            <i class="fab fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fab fa-cc-discover" style="color:orange;"></i>
                         </div>
                         <label for="cname">Name on Card</label>
                         <input type="text" id="cname" name="cardname" placeholder="John More Doe">
@@ -83,8 +85,10 @@
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
-                <input id="checkout" type="submit" value="Continue to checkout" class="btn">
-            </div>
+
+                <br>
+                <input type="submit" value="Continue to checkout" class="btn btn-success">
+
         </div>
 </form>
     <div class="col-25">
