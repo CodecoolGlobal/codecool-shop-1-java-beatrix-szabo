@@ -42,6 +42,7 @@ public class CheckoutFetch extends HttpServlet {
         dataList.add(cvv);
         dataList.add(orderNum);
         dataList.add(Date());
+        dataList.add(email);
         EmailSend emailToSend = new EmailSend(email, dataList);
         emailToSend.emailSend();
     }
