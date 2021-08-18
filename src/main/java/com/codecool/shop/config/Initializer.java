@@ -6,19 +6,16 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dtbManager.DatabaseInfo;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
-import com.codecool.shop.users.AdminUser;
 import com.codecool.shop.users.AllUser;
-import com.codecool.shop.users.User;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -51,5 +48,7 @@ public class Initializer implements ServletContextListener {
 
         //Setting up Users and Superusers
         AllUser allUser = AllUser.getInstance();
+
+        DatabaseInfo a = new DatabaseInfo();
     }
 }
