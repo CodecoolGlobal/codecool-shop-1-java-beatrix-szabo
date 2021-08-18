@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/order"})
@@ -17,7 +18,11 @@ public class OrderController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException{
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, rep, req.getServletContext());
-        engine.process("product/Order.html", context, rep.getWriter());
+
         CartDao cart = CartDaoMem.getInstance();
+        context.setVariable("cart", cart);
+
+
+        engine.process("product/Order.html", context, rep.getWriter());
     }
 }
