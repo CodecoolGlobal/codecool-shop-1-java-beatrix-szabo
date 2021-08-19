@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
   <body>
         <div class="jumbotron text-center">
@@ -56,7 +57,7 @@
                             <a class="btn btn-success" th:href="@{/another/{product} (product=${prod.key.name})}">+</a>
                             <h5 class="" th:text="${prod.value}">100 USD</h5>
                             <a class="btn btn-success" th:href="@{/remove/{product} (product=${prod.key.name})}">-</a>
-                            <a class="btn btn-success" th:href="@{/remove/all/{product} (product=${prod.key.name})}">K</a>
+                            <a class="btn btn-success" th:href="@{/remove/all/{product} (product=${prod.key.name})}"><i class="fa fa-trash-o"></i></a>
                         </div>
                     </div>
                 </div>
