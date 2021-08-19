@@ -71,14 +71,6 @@
     float: right;
 }
 
-#chose_supplier:hover {
-    background-color: darkgreen;
-}
-
-#chose_category:hover {
-    background-color: darkgreen
-}
-
 .badge {
     padding-left: 9px;
     padding-right: 9px;
