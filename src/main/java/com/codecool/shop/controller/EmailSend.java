@@ -49,12 +49,12 @@ public class EmailSend {
                     InternetAddress.parse(useremail)
             );
             message.setSubject("Order from CodeCool shop");
-            message.setText("Thanks for your order, "+dataList.get(0) +"\n"+
+            message.setText("Thanks for your order, "+"\n"+
             "Your order Number: " + dataList.get(10)+"\n"+
-            "You orderd: "+"\n"+
+            "You ordered: "+"\n"+
             "Date of order: " + dataList.get(11)+"\n"+
             "Your card number: " + dataList.get(6)+"\n"+
-            "Hope you like our shop");
+            "Hope you like our shop!");
 
 
             Transport.send(message);

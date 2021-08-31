@@ -69,7 +69,7 @@ public class ProductController extends HttpServlet {
         }
 
 
-        context.setVariable("username", "Logged in as" + username) ;
+        context.setVariable("username", "Logged in as " + username) ;
         context.setVariable("loggedin", loggedIn);
         context.setVariable("Cart", cart);
         context.setVariable("allCategory", getAllCategory(productDataStore));

@@ -29,7 +29,7 @@ public class CheckoutFetch extends HttpServlet {
         String expmonth = req.getParameter("expmonth");
         String expyear = req.getParameter("expyear");
         String cvv = req.getParameter("cvv");
-        String orderNum = "8A751AR";
+        String orderNum = orderNumber();
         dataList.add(fname);
         dataList.add(adr);
         dataList.add(city);
@@ -50,6 +50,12 @@ public class CheckoutFetch extends HttpServlet {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return String.valueOf(dtf.format(now));
+    }
+
+    protected String orderNumber(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime now = LocalDateTime.now();
+        return "CCS-"+String.valueOf(dtf.format(now));
     }
 }
 
