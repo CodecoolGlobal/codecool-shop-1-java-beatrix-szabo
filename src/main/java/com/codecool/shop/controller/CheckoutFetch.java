@@ -55,6 +55,7 @@ public class CheckoutFetch extends HttpServlet {
         CartDao cart = CartDaoMem.getInstance();
         context.setVariable("cart", cart);
         context.setVariable("emailToSend", emailToSend);
+        context.setVariable("datalist", dataList);
         engine.process("product/OrderDetail.html", context, rep.getWriter());
 
     }
