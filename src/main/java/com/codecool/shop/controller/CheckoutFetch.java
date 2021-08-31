@@ -1,5 +1,11 @@
 package com.codecool.shop.controller;
 
+import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +22,7 @@ public class CheckoutFetch extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
-        rep.sendRedirect(req.getContextPath() + "/");
+        //rep.sendRedirect(req.getContextPath() + "/");
         ArrayList dataList = new ArrayList();
         String fname = req.getParameter("firstname");
         String email = req.getParameter("email");
@@ -44,7 +50,13 @@ public class CheckoutFetch extends HttpServlet {
         dataList.add(Date());
         dataList.add(email);
         EmailSend emailToSend = new EmailSend(email, dataList);
-        emailToSend.emailSend();
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+        WebContext context = new WebContext(req, rep, req.getServletContext());
+        CartDao cart = CartDaoMem.getInstance();
+        context.setVariable("cart", cart);
+        context.setVariable("emailToSend", emailToSend);
+        engine.process("product/OrderDetail.html", context, rep.getWriter());
+
     }
     protected String Date(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
