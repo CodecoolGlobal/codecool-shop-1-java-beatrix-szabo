@@ -34,16 +34,12 @@ public class CheckoutFetch extends HttpServlet {
         String expmonth = req.getParameter("expmonth");
         String expyear = req.getParameter("expyear");
         String cvv = req.getParameter("cvv");
-<<<<<<< HEAD
         String orderNum = orderNumber();
         dataList.add(fname);
         dataList.add(adr);
         dataList.add(city);
         dataList.add(state);
         dataList.add(zip);
-=======
-        String orderNum = "8A751AR";
->>>>>>> 150d9f6af28349003554c0353b45155b3ec74343
         dataList.add(cardName);
         dataList.add(cnum);
         dataList.add(expmonth);
