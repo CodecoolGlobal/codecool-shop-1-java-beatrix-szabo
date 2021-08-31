@@ -18,23 +18,32 @@ public class CheckoutFetch extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         rep.sendRedirect(req.getContextPath() + "/");
         ArrayList dataList = new ArrayList();
-        String fname = req.getParameter("fname");
+        String fname = req.getParameter("firstname");
         String email = req.getParameter("email");
-        String adr = req.getParameter("adr");
+        String adr = req.getParameter("address");
         String city = req.getParameter("city");
         String state = req.getParameter("state");
         String zip = req.getParameter("zip");
+        dataList.add(fname);
+        dataList.add(adr);
+        dataList.add(city);
+        dataList.add(state);
+        dataList.add(zip);
         String cardName = req.getParameter("cardname");
         String cnum = req.getParameter("cardnumber");
         String expmonth = req.getParameter("expmonth");
         String expyear = req.getParameter("expyear");
         String cvv = req.getParameter("cvv");
+<<<<<<< HEAD
         String orderNum = orderNumber();
         dataList.add(fname);
         dataList.add(adr);
         dataList.add(city);
         dataList.add(state);
         dataList.add(zip);
+=======
+        String orderNum = "8A751AR";
+>>>>>>> 150d9f6af28349003554c0353b45155b3ec74343
         dataList.add(cardName);
         dataList.add(cnum);
         dataList.add(expmonth);

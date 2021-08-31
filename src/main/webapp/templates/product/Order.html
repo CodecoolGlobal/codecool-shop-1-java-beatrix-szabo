@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Order Page</title>
@@ -18,7 +18,6 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/order.css" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -53,8 +52,10 @@
                         </div>
                     </div>
 
-                    <div class="col-50">
+                    <div id="payment" class="col-50">
                         <h3>Payment</h3>
+                        <table border="0" cellpadding="10" cellspacing="0" align="center"><tbody><tr><td align="left"></td></tr><tr><td align="center"><a href="https://www.paypal.com/be/webapps/mpp/paypal-popup" title="PayPal Comment Ca Marche" onclick="javascript:window.open('https://www.paypal.com/be/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" border="0" alt="PayPal Logo" /></a></td></tr></tbody></table>
+                        <br>
                         <label for="fname">Accepted Cards</label>
                         <div class="icon-container">
                             <i class="fab fa-cc-visa" style="color:navy;"></i>
@@ -106,6 +107,25 @@
         </div>
     </div>
 </div>
+<script defer>
+    var paymentbut = document.getElementById("paymentcheck");
+    paymentbut.addEventListener("click", payment);
+    function payment(){
+        var paymentDiv = document.getElementById("payment");
+        var paymentlabel = document.createElement("label");
+        var paypalmail = document.createElement("input");
+        var payment = document.createElement("h3");
+        payment.innerText = "Payment in PayPal"
+        paymentlabel.setAttribute("for", "paypalmail");
+        paymentlabel.innerText = "PayPal email";
+        paypalmail.setAttribute("type", "text");
+        paypalmail.setAttribute("id", "paypalmail")
+        paypalmail.setAttribute("placeholder", "example@email.com");
+        paymentDiv.innerHTML = "";
+        paymentDiv.appendChild(paymentlabel);
+        paymentDiv.appendChild(paypalmail);
+    };
+</script>
 <!--
     I think i gonna drip to make it trough with javascript and just make it with form but live this to make a bit challenge
 <script defer>
