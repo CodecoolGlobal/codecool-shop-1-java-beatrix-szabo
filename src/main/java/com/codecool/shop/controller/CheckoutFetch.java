@@ -18,9 +18,9 @@ public class CheckoutFetch extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         rep.sendRedirect(req.getContextPath() + "/");
         ArrayList dataList = new ArrayList();
-        String fname = req.getParameter("fname");
+        String fname = req.getParameter("firstname");
         String email = req.getParameter("email");
-        String adr = req.getParameter("adr");
+        String adr = req.getParameter("address");
         String city = req.getParameter("city");
         String state = req.getParameter("state");
         String zip = req.getParameter("zip");
