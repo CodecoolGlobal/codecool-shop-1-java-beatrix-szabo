@@ -22,7 +22,8 @@ public class OrderController extends HttpServlet{
         CartDao cart = CartDaoMem.getInstance();
         context.setVariable("cart", cart);
 
-
         engine.process("product/Order.html", context, rep.getWriter());
     }
+
+
 }
