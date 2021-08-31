@@ -11,18 +11,15 @@ public class DatabaseInfo {
     private String dbsName;
 
     public String getUsername() {
-        System.out.println(username);
         return username;
     }
 
     public String getPassword() {
-        System.out.println(password);
         return password;
     }
 
 
     public String getDbsName() {
-        System.out.println(dbsName);
         return dbsName;
     }
 
@@ -31,20 +28,21 @@ public class DatabaseInfo {
         try {
             Scanner scanner = new Scanner(new File("src/main/java/com/codecool/shop/dtbManager/dbsInfo.txt"));
             int counter = 1;
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                while (scanner.hasNextLine()) {
-                    if (counter == 1) {
-                        dbsName = line;
-                    } else if (counter == 2) {
-                        username = line;
-                    } else if (counter == 3) {
-                        password = line;
-                        break;
-                    }
-                    counter++;
+
+            String line = scanner.nextLine();
+            while (counter !=4) {
+                if (counter == 1) {
+                    dbsName = line;
+                } else if (counter == 2) {
+                    username = line;
+                } else if (counter == 3) {
+                    password = line;
+                    break;
                 }
+                counter++;
+                line = scanner.nextLine();
             }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
