@@ -9,7 +9,7 @@ CREATE TABLE users (
 	id serial PRIMARY KEY,
 	username TEXT,
 	email TEXT,
-	user_password TEXT
+	user_password TEXT,
 );
 
 INSERT INTO users (username, email, user_password) VALUES
@@ -71,9 +71,9 @@ VALUES ('Amazon', 'Digital content and services'),('Lenovo', 'Computers');
 /* I think it wont be good */
 CREATE TABLE cart (
 	id serial PRIMARY KEY,
-	product_id int,
-	full_price int
+	product_id int
 );
+
 
 
 

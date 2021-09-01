@@ -6,18 +6,15 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.dtbManager.DatabaseHandler.DbsHandler;
+import com.codecool.shop.dtbManager.DatabaseHandler.AddToDataBase;
+import com.codecool.shop.dtbManager.DatabaseHandler.InitDataBase;
 import com.codecool.shop.model.Cart;
-import com.codecool.shop.model.Product;
-import com.codecool.shop.model.ProductCategory;
-import com.codecool.shop.model.Supplier;
 import com.codecool.shop.users.AllUser;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -29,9 +26,10 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         try {
-            DbsHandler dbsHandler = new DbsHandler();
+            AddToDataBase adb = AddToDataBase.getInstance();
+            InitDataBase initDataBase = new InitDataBase();
             // setting up a new supplier
-            dbsHandler.getSuppliers().forEach(supplierDataStore::add);
+            initDataBase.getSuppliers().forEach(supplierDataStore::add);
 
             /*Supplier amazon = new Supplier("Amazon", "Digital content and services");
             supplierDataStore.add(amazon);
@@ -39,7 +37,7 @@ public class Initializer implements ServletContextListener {
             supplierDataStore.add(lenovo);*/
 
             //setting up a new product category
-            dbsHandler.getProductCategories().forEach(productCategoryDataStore::add);
+            initDataBase.getProductCategories().forEach(productCategoryDataStore::add);
 
             /*ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
             productCategoryDataStore.add(tablet);
@@ -47,14 +45,15 @@ public class Initializer implements ServletContextListener {
             productCategoryDataStore.add(telephone);*/
 
             //setting up products and printing it
-            dbsHandler.getProducts().forEach(productDataStore::add);
+            initDataBase.getProducts().forEach(productDataStore::add);
 
             /*productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", telephone, amazon));
             productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
             productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));*/
 
             //setting up a cart
-            Cart CartList = new Cart();
+            Cart CartList = initDataBase.getCart();
+            CartList.getProductCartList().forEach(p-> System.out.println(p.toString()));
 
             //Setting up Users and Superusers
             AllUser allUser = AllUser.getInstance();

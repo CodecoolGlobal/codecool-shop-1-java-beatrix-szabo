@@ -1,5 +1,6 @@
 package com.codecool.shop.dtbManager.DatabaseHandler;
 
+import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.dtbManager.ConnectDatabase;
 import com.codecool.shop.model.ProductCategory;
@@ -14,13 +15,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DbsHandler {
-    public DbsHandler() throws SQLException {
+public class InitDataBase {
+    public InitDataBase() throws SQLException {
         DataSource dataSource = ConnectDatabase.connect();
         Connection conn = dataSource.getConnection();
         setSuppliers(conn, dataSource);
         setCategory(conn,dataSource);
         setProducts(conn,dataSource);
+        setCart(conn, dataSource);
     }
 
     private void setSuppliers(Connection conn, DataSource dataSource) throws SQLException {
@@ -49,17 +51,16 @@ public class DbsHandler {
         while(rs.next()) {
             Product p = new Product(rs.getString(2), rs.getFloat(4), rs.getString(5), rs.getString(3), getCategoryToProduct(rs.getInt(7)),getSupplierToProduct(rs.getInt(6)));
             p.setId(rs.getInt(1));
-            System.out.println(p.toString());
             products.add(p);
         }
     }
 
-    public List<Supplier> getSuppliers() {
-        return suppliers;
-    }
-
-    public List<ProductCategory> getProductCategories() {
-        return productCategories;
+    private void setCart(Connection conn, DataSource dataSource) throws SQLException {
+        String sql = "SELECT * FROM cart";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        while(rs.next()){
+            cart.add(getProductByID(rs.getInt(2)));
+        }
     }
 
     private ProductCategory getCategoryToProduct(int id){
@@ -80,12 +81,36 @@ public class DbsHandler {
         return null;
     }
 
+    private Product getProductByID(int id) {
+        for(Product p : products) {
+            if(p.getId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+
+
+    //--------------------------GETTERS
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public List<ProductCategory> getProductCategories() {
+        return productCategories;
+    }
+
     public List<Product> getProducts() {
         return products;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     private List<Supplier> suppliers = new ArrayList<>();
     private List<ProductCategory> productCategories = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
+    private Cart cart = new Cart();
 }
 
