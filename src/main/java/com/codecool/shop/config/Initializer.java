@@ -53,7 +53,6 @@ public class Initializer implements ServletContextListener {
 
             //setting up a cart
             Cart CartList = initDataBase.getCart();
-            CartList.getProductCartList().forEach(p-> System.out.println(p.toString()));
 
             //Setting up Users and Superusers
             AllUser allUser = AllUser.getInstance();

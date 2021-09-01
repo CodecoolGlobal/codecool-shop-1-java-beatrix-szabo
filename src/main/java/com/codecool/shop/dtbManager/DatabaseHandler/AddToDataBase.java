@@ -25,13 +25,18 @@ public class AddToDataBase {
 
     public void addToCart(Product p) throws SQLException {
         String sql = "INSERT INTO cart (product_id) VALUES (" + p.getId() + ")";
-        conn.createStatement().executeQuery(sql);
+        conn.createStatement().executeUpdate(sql);
+
+    }
+
+    public void deleteFromCart(Product p) throws SQLException {
+        String sql = "DELETE FROM cart WHERE id = "+ p.getId();
+        conn.createStatement().executeUpdate(sql);
     }
 
     public void addNewUser(User user) throws SQLException {
-        String sql = "INSERT INTO users (username, email, user_password) VALUES(" + user.getName() + "," +
-                user.getEmail() + "," + user.getPassword();
-        conn.createStatement().executeQuery(sql);
+        String sql = new StringBuilder().append("INSERT INTO users (username, email, user_password) VALUES('").append(user.getName()).append("', '").append(user.getEmail()).append("', '").append(user.getPassword()).append("')").toString();
+        conn.createStatement().executeUpdate(sql);
     }
 
     DataSource dataSource = ConnectDatabase.connect();

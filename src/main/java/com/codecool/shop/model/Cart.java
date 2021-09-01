@@ -5,6 +5,13 @@ import java.util.ArrayList;
 
 public class Cart {
 
+    public static Cart getInstance() {
+        if(instance == null) {
+            instance = new Cart();
+        }
+        return instance;
+    }
+
     public ArrayList<Product> getProductCartList() {
         return productCartList;
     }
@@ -15,6 +22,6 @@ public class Cart {
     }
 
     private ArrayList<Product> productCartList = new ArrayList<>();
-
+    private static Cart instance;
 
 }

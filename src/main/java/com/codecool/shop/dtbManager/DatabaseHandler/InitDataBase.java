@@ -111,6 +111,6 @@ public class InitDataBase {
     private List<Supplier> suppliers = new ArrayList<>();
     private List<ProductCategory> productCategories = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
-    private Cart cart = new Cart();
+    private Cart cart = Cart.getInstance();
 }
 

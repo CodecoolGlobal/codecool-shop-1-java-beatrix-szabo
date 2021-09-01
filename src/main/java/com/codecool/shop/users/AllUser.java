@@ -1,5 +1,8 @@
 package com.codecool.shop.users;
 
+import com.codecool.shop.dtbManager.DatabaseHandler.AddToDataBase;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,9 @@ private AdminUser admins = AdminUser.getInstance();
         return allUser;
     }
 
-    public void addUser(User user) {
+    public void addUser(User user) throws SQLException {
+        AddToDataBase add = AddToDataBase.getInstance();
+        add.addNewUser(user);
         this.allUser.add(user);
     }
 }
