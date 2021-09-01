@@ -30,6 +30,7 @@
     <title>Order details</title>
 </head>
 <body>
+
 <div class="jumbotron text-center">
   <h1>Codecool Shop</h1>
   <!-- Find the right place for the menubar div -->
@@ -40,16 +41,19 @@
           <div class="row">
             <div class="col-50">
               <h3>Billing Address</h3>
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <label><i class="fa fa-user"></i> Full Name</label>
               <label id="fname" name="fname" th:text="${datalist[0]}"></label>
-              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+              <p>---------------------------------------------</p>
+              <label ><i class="fa fa-envelope"></i> Email</label>
               <label id="email" name="email" th:text="${datalist[12]}"></label>
-              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+              <p>---------------------------------------------</p>
+              <label ><i class="fa fa-address-card-o"></i> Address</label>
               <label id="adr" name="adr" th:text="${datalist[1]}"></label>
-              <label for="city"><i class="fa fa-institution"></i> City</label>
+              <p>---------------------------------------------</p>
+              <label ><i class="fa fa-institution"></i> City</label>
               <label id="city" name="city" th:text="${datalist[2]}"></label>
+              <p>---------------------------------------------</p>
 
-              <div class="row">
                 <div class="col-50">
                   <label for="state">State</label>
                   <label id="state" name="state" th:text="${datalist[3]}"></label>
@@ -58,7 +62,6 @@
                   <label for="zip">Zip</label>
                   <label id="zip" name="zip" th:text="${datalist[4]}"></label>
                 </div>
-              </div>
             </div>
           </div>
 
@@ -80,9 +83,10 @@
             </div></div></div></div></div></div>
      <span type="hidden" th:text="${emailToSend.emailSend()}"></span>
     <script defer>
-        setTimeout(function(){
-        window.location.href = '/';
-      }, 5000);
+      alert("Hi the page will automaticly sned you to home Page");
+        //setTimeout(function(){
+        //window.location.href = '/';
+      //}, 8000);
     </script>
 </body>
 </html>
